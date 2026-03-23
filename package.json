@@ -1,0 +1,61 @@
+{
+  "name": "@opencompress/openclaw",
+  "version": "3.0.0",
+  "description": "OpenCompress for OpenClaw — save tokens and sharpen quality on any LLM",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "openclaw.security.json"
+  ],
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "opencompress",
+    "compression",
+    "llm",
+    "token-optimization",
+    "prompt-compression",
+    "quality"
+  ],
+  "author": "OpenCompress <hello@opencompress.ai>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/open-compress/opencompress-openclaw.git"
+  },
+  "peerDependencies": {
+    "openclaw": ">=2025.1.0"
+  },
+  "peerDependenciesMeta": {
+    "openclaw": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  }
+}

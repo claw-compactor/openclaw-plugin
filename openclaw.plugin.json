@@ -1,0 +1,19 @@
+{
+  "id": "opencompress",
+  "name": "OpenCompress",
+  "description": "OpenCompress for OpenClaw — save tokens and sharpen quality on any LLM. Use your existing providers.",
+  "providers": ["opencompress"],
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "apiKey": {
+        "type": "string",
+        "description": "OpenCompress API key (sk-occ-...)"
+      }
+    },
+    "required": []
+  },
+  "providerAuthEnvVars": {
+    "opencompress": ["OPENCOMPRESS_API_KEY"]
+  }
+}

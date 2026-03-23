@@ -1,0 +1,37 @@
+{
+  "id": "opencompress",
+  "version": "3.0.0",
+  "securityProfile": {
+    "dataHandling": {
+      "promptContent": "pass-through (compressed in-transit, never stored)",
+      "upstreamApiKeys": "local-only (read from api.config, sent per-request as header, never persisted)"
+    },
+    "networkAccess": {
+      "outbound": [
+        {
+          "host": "www.opencompress.ai",
+          "port": 443,
+          "protocol": "https",
+          "purpose": "Compress prompts and forward to user's upstream LLM provider"
+        },
+        {
+          "host": "127.0.0.1",
+          "port": 8401,
+          "protocol": "http",
+          "purpose": "Local proxy — receives requests from OpenClaw, routes to opencompress.ai"
+        }
+      ]
+    },
+    "permissions": {
+      "fileSystem": "none (all config via api.config runtime API)",
+      "environment": ["OPENCOMPRESS_API_KEY"],
+      "shell": "none",
+      "network": "outbound HTTPS to www.opencompress.ai + local HTTP proxy on 127.0.0.1:8401"
+    }
+  },
+  "privacyPolicy": {
+    "prompts": "Compressed in-memory and forwarded. NEVER stored or logged.",
+    "upstreamKeys": "Read from OpenClaw runtime config. Sent per-request via header. Never persisted server-side.",
+    "billing": "Only token counts recorded. No prompt content."
+  }
+}
